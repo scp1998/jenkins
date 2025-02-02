@@ -7,5 +7,28 @@ pipeline {
       }
     }
 
+    stage('prod') {
+      parallel {
+        stage('prod') {
+          steps {
+            sh 'date'
+          }
+        }
+
+        stage('cal') {
+          steps {
+            sh 'cal'
+          }
+        }
+
+      }
+    }
+
+    stage('deploy') {
+      steps {
+        echo 'final'
+      }
+    }
+
   }
 }
